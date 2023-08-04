@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.Controlador;
+import modelo.Infractor;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,7 +27,10 @@ import javax.swing.JTable;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
+
 
 public class VentanaMostrarInfractores extends JFrame {
 
@@ -66,6 +70,26 @@ public class VentanaMostrarInfractores extends JFrame {
 		panel.add(scrollPane, "cell 0 1,grow");
 		
 		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"DNI", "Nombre", "Apellidos", "Antig\u00FCedad", "Sanci\u00F3n", "Puntos"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, Integer.class, Float.class, Integer.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		scrollPane.setViewportView(table);
 		
 		JPanel panel_1 = new JPanel();
@@ -83,7 +107,28 @@ public class VentanaMostrarInfractores extends JFrame {
 	}
 
 
-	
-	
+	public void setControlador(Controlador controlador) {
+		this.controlador=controlador;		
+	}
 
+
+	public void setListaInfractores(ArrayList<Infractor> listaInfractores) {
+		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+		
+		modelo.setRowCount(0);
+		
+		for (Infractor infractor : listaInfractores) {
+			
+			Object fila[]= {
+					infractor.getDni(),
+					infractor.getNombre(),
+					infractor.getApellidos(),
+					infractor.getAntiguedad(),
+					infractor.getSancion(),
+					infractor.getPuntos()
+			};
+			modelo.addRow(fila);
+		}
+		
+	}
 }

@@ -32,6 +32,11 @@ public class VentanaPpal extends JFrame {
 		contentPane.setLayout(new MigLayout("", "[][grow][grow][grow][grow]", "[][62px][][62][][62.00]"));
 		
 		JButton btnNewButton_1 = new JButton("Mostrar Infractores");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.mostrarInfractores();
+			}
+		});
 		contentPane.add(btnNewButton_1, "cell 1 3,grow");
 		
 		JButton btnNewButton_2 = new JButton("Insertar Infractor");
