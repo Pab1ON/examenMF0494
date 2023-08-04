@@ -8,7 +8,12 @@ package uf2181;
  *
  */
 public class FuncionesDGT {
-
+	/**
+	 * Método que calcula la media de los puntos de un conductor
+	 * @param puntos int[] con todos los puntos almacenados
+	 * @return double con la media de los puntps
+	 * @throws ArrayIndexOutOfBoundsException cuando se pasa una lista vacía
+	 */
 	public double mediaPuntos(int puntos[]) {
 		double suma = 0;
 		
@@ -19,6 +24,12 @@ public class FuncionesDGT {
 		return suma/puntos.length;
 	}
 	
+	/**
+	 * Método que devuelve la tasa máxima de alcohol permitida según el tipo de conductor
+	 * @param tipoConductor String indicianto el tipo de conductor, que puede ser "General" o "Novel"
+	 * @param aire boolean indicando si es la tasa en aire cuando es true, o en sangre cuando es false
+	 * @return double con la tasa máxima permitida
+	 */
 	public double maximaTasaPermitida(String tipoConductor, boolean aire) {
 		double tasa=0.25;
 		if (tipoConductor.equalsIgnoreCase("General")) {
