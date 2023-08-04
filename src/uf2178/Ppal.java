@@ -41,6 +41,7 @@ public class Ppal {
 		System.out.println("Estos son los puntos restantes de la lista de conductores: ");
 		Funciones.mostrar_vector(puntos);
 		
+		teclado.close();
 	}
 
 }
