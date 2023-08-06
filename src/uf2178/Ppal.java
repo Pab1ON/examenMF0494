@@ -17,6 +17,7 @@ public class Ppal {
 	public static void main(String[] args) {
 		// Escribe aqu� las sentencias del apartado 3
 		Scanner teclado = new Scanner(System.in);
+		// TODO perfectamente pedido por teclado con control de errores 0.25/0.25
 		System.out.println("Introduce la tasa de alcoholemia del conductor:");
 		double tasa=teclado.nextDouble();
 		while (tasa<0) {
@@ -24,8 +25,10 @@ public class Ppal {
 			tasa=teclado.nextDouble();
 		}
 		
+		// TODO llamada a la función correcta 0.25/0.25
 		Funciones.calculaSancion(tasa);
 				
+		// TODO vectores pedidos correctamente 0.5/0.5
 		int puntos[]=new int[6];
 		System.out.println();
 		System.out.println("Introduce los puntos de los conductores:");
@@ -35,9 +38,11 @@ public class Ppal {
 		int sanciones[]=new int[6];
 		Funciones.pedir_vector(sanciones);
 		
+		// TODO invocación correcta 0.25/0.25
 		Funciones.restaPuntos(puntos, sanciones);
 		
 		System.out.println();
+		// TODO puntos mostrados correctamente 0.25/0.25
 		System.out.println("Estos son los puntos restantes de la lista de conductores: ");
 		Funciones.mostrar_vector(puntos);
 		

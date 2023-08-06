@@ -18,6 +18,7 @@ private ConexionBD conexion;
         this.conexion = new ConexionBD();
     }
     
+    // TODO Método correcto 0.75
     public ArrayList<Infractor> obtenerInfractores() {
     	Connection con = conexion.getConexion();
 		Statement consulta = null;
@@ -26,9 +27,11 @@ private ConexionBD conexion;
 		
 		try {
 			consulta = con.createStatement();
+			// TODO consulta correcta
 			resultado = consulta.executeQuery("select * from infractores");
 			
 			while(resultado.next()) {
+				// TODO Datos recogidos correctamente 
 				String dni=resultado.getString("dni");
 				String nombre=resultado.getString("nombre");
 				String apellidos=resultado.getString("apellidos");
@@ -36,6 +39,7 @@ private ConexionBD conexion;
 				float sancion=resultado.getFloat("sancion");
 				int puntos=resultado.getInt("puntos");
 				
+				// TODO Objeto instanciado y añadido a la lista
 				Infractor i = new Infractor(dni,nombre,apellidos,antiguedad,sancion,puntos);
 				lista.add(i);
 			}
@@ -56,15 +60,18 @@ private ConexionBD conexion;
 		return lista;
     }
     
+    // TODO método correcto 0.75/0.75
     public int insertariInfractor(Infractor i) {
 		Connection con = conexion.getConexion();
 		PreparedStatement consulta = null;
 		int resultado=0;
 		
 		try {
+			// TODO consulta correcta
 			consulta = con.prepareStatement("INSERT INTO infractores "
 					+ "VALUES(?,?,?,?,?,?)");
 			
+			// TODO parámetros establecidos correctamente 
 			consulta.setString(1, i.getDni());
 			consulta.setString(2, i.getNombre());
 			consulta.setString(3, i.getApellidos());

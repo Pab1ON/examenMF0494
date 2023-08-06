@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Infractor {
 	
+	// TODO campos correctos, constructor con parámetros correcto, el otro está en blanco 0.4/0.5
 	private String dni;
 	private String nombre;
 	private String apellidos;
@@ -23,6 +24,8 @@ public class Infractor {
 	
 	public Infractor() {
 	}
+	
+	// TODO getters y setters definidos 0.5/0.5
 
 	public String getDni() {
 		return dni;
@@ -72,6 +75,8 @@ public class Infractor {
 		this.puntos = puntos;
 	}
 
+	
+	// TODO hashCode, equals y toString correctos 0.5
 	@Override
 	public int hashCode() {
 		return Objects.hash(dni);
