@@ -13,6 +13,7 @@ import java.sql.SQLException;
  */
 public class ConexionBD {
 
+	// TODO Bien cambiando la bbdd
 	private static final String database = "dgt";
 	private static final String usuario = "root";
 	private static final String contrasena = "123456";

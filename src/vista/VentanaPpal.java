@@ -34,6 +34,7 @@ public class VentanaPpal extends JFrame {
 		JButton btnNewButton_1 = new JButton("Mostrar Infractores");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// TODO Botón enlazado
 				controlador.mostrarInfractores();
 			}
 		});

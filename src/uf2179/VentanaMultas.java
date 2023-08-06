@@ -62,6 +62,7 @@ public class VentanaMultas extends JFrame {
 		contentPane.setBorder(null);
 
 		setContentPane(contentPane);
+		// TODO Layout no absoluto utilizado 0.5/0.5
 		contentPane.setLayout(new MigLayout("", "[][grow][][grow]", "[][][][][][][][grow]"));
 		
 		JPanel panel = new JPanel();
@@ -79,6 +80,7 @@ public class VentanaMultas extends JFrame {
 		JLabel lblMatricula = new JLabel("Matrícula:");
 		contentPane.add(lblMatricula, "cell 0 1,alignx trailing");
 		
+		// TODO CAjas de texto y etiquetas corretamente definidas 0.5/0.5
 		textMatricula = new JTextField();
 		contentPane.add(textMatricula, "cell 1 1,growx");
 		textMatricula.setColumns(10);
@@ -106,6 +108,7 @@ public class VentanaMultas extends JFrame {
 				cambiarSancion();
 			}
 		});
+		// TODO JComboBox añadido correctamente con modelo y expuesto 0.5/0.5 
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"No llevar Casco", "Conducción temeraria"}));
 		contentPane.add(comboBox, "cell 1 3 3 1,growx");
 		
@@ -115,6 +118,7 @@ public class VentanaMultas extends JFrame {
 		lblCantidad = new JLabel("200");
 		contentPane.add(lblCantidad, "cell 1 4");
 		
+		// TODO Botones radio definidos, expuestos, metidos en grupo y con opción por defecto 0.5/0.5
 		rdbtnNormal = new JRadioButton("Pago Normal");
 		rdbtnNormal.setSelected(true);
 		buttonGroup.add(rdbtnNormal);
@@ -134,6 +138,9 @@ public class VentanaMultas extends JFrame {
 		});
 		contentPane.add(btnAceptar, "cell 0 6 4 1,alignx center");
 		
+		// TODO Resto de componentes añadidos con valor por defecto para la etiqueta de importe
+		// ya que está seleccionado por defecto No llevar casco 0.5/0.5
+
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, "cell 0 7 4 1,grow");
 		
@@ -142,6 +149,8 @@ public class VentanaMultas extends JFrame {
 		scrollPane.setViewportView(textPane);
 	}
 
+	// TODO Correcto. Datos recogidos correctamente y con validación de campos rellenos, eso sí deberías 
+	// también comprobar la nulidad, no quedarte sólo en el isBlank 1.5/1.5
 	protected void recogerDatos() {
 		String matricula=textMatricula.getText();
 		String nombre=textNombre.getText();
@@ -149,9 +158,11 @@ public class VentanaMultas extends JFrame {
 		if (matricula.isBlank() || nombre.isBlank() || apellidos.isBlank())
 			JOptionPane.showMessageDialog(contentPane, "Debes rellenar todas las casillas","Casillas en blanco",JOptionPane.ERROR_MESSAGE);
 		String infraccion=(String) comboBox.getSelectedItem();
+		// TODO Bien parseando la cantidad
 		int importe=Integer.parseInt(lblCantidad.getText());
 		String pagoString=rdbtnNormal.isSelected()?rdbtnNormal.getText():rdbtnPronto.getText();
 		
+		// TODO Bien construyendo el mensaje
 		textPane.setText(
 				"Conductor: "+nombre+" "+apellidos+
 				"\nInfracción: "+infraccion+
@@ -161,6 +172,9 @@ public class VentanaMultas extends JFrame {
 				"\nPronto pago: "+importe/2f);
 	}
 
+	// TODO método correcto, pero ten encuenta que LAS COMPARACIONES CON String 
+	// SE HACEN SIEMPRE CON equals!!!!!, me duele la boca de decirlo ...
+	// 0.8/1.0
 	protected void cambiarSancion() {
 		if (comboBox.getSelectedItem()=="No llevar Casco") lblCantidad.setText("200");
 		else lblCantidad.setText("500");		

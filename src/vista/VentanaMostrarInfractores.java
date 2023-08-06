@@ -70,6 +70,7 @@ public class VentanaMostrarInfractores extends JFrame {
 		panel.add(scrollPane, "cell 0 1,grow");
 		
 		table = new JTable();
+		// TODO modelo de la tabla creado correctamente 
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -107,11 +108,13 @@ public class VentanaMostrarInfractores extends JFrame {
 	}
 
 
+	// TODO método correcto y campo definido
 	public void setControlador(Controlador controlador) {
 		this.controlador=controlador;		
 	}
 
 
+	// TODO método correcto para mostrar la información de los infractores
 	public void setListaInfractores(ArrayList<Infractor> listaInfractores) {
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		
